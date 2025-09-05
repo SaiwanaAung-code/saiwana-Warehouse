@@ -1,1 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+@use './app/components/navigation/navigation.scss';
+@import "primeicons/primeicons.css";
+@import "tailwindcss";
+
+
+/* You can add any global overrides here if needed */
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  background-color: var(--surface-ground); 
+}
