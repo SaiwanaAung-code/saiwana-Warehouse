@@ -1,17 +1,9 @@
 <nav class="menu">
   <ul>
-    <!-- Drawer toggle -->
-    <li>
-      <a (click)="drawerVisible = true" tabindex="0" pRipple>
-        <i class="pi pi-bars layout-menuitem-icon"></i>
-        <span class="layout-menuitem-text">Open Drawer</span>
-      </a>
-    </li>
-    <!-- Existing menu items -->
-    @for (item of items; track item){
+    @for (item of items; track item.label){
       <li>
         <a
-          (click)="itemClick($event)"
+          (click)="itemClick($event, item)"
           [routerLink]="item.routerLink"
           routerLinkActive="active-route"
           [routerLinkActiveOptions]="{ exact: true }"
@@ -23,17 +15,31 @@
         </a>
       </li>
     }
-
-    
   </ul>
 </nav>
 
-<!-- Drawer -->
-<p-drawer [(visible)]="drawerVisible" position="right" [showCloseIcon]="true">
-  <h3>Drawer Menu</h3>
-  <ul>
-    @for (page of drawerPages; track page){
-      <li><a [routerLink]="page.link">{{ page.label }}</a></li>
-    }
-  </ul>
+<p-drawer [(visible)]="sidebarVisible" position="left" [showCloseIcon]="true">
+  <ng-template pTemplate="header">
+    <h3>{{ drawerHeader }}</h3>
+  </ng-template>
+
+  <div class="drawer-content">
+    <ul class="p-list-unstyled">
+      @for(page of drawerItems; track page.label){
+        <li>
+          <a
+            [routerLink]="page.link"
+            (click)="onDrawerItemClick()" 
+            tabindex="0"
+            pRipple
+            routerLinkActive="active-drawer-route"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            <i [ngClass]="page.icon" class="p-mr-2"></i>
+            <span>{{ page.label }}</span>
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
 </p-drawer>
