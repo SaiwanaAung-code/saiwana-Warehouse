@@ -3,10 +3,9 @@
     @for (item of items; track item.label){
       <li>
         <a
-          (click)="itemClick($event, item)"
+          (click)="itemClick(item)"
           [routerLink]="item.routerLink"
           routerLinkActive="active-route"
-          [routerLinkActiveOptions]="{ exact: true }"
           tabindex="0"
           pRipple
         >
@@ -24,22 +23,6 @@
   </ng-template>
 
   <div class="drawer-content">
-    <ul class="p-list-unstyled">
-      @for(page of drawerItems; track page.label){
-        <li>
-          <a
-            [routerLink]="page.link"
-            (click)="onDrawerItemClick()" 
-            tabindex="0"
-            pRipple
-            routerLinkActive="active-drawer-route"
-            [routerLinkActiveOptions]="{ exact: true }"
-          >
-            <i [ngClass]="page.icon" class="p-mr-2"></i>
-            <span>{{ page.label }}</span>
-          </a>
-        </li>
-      }
-    </ul>
+    <p-menu [model]="drawerItems"></p-menu>
   </div>
 </p-drawer>
