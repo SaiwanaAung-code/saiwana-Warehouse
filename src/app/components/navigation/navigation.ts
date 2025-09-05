@@ -4,8 +4,7 @@ import { RouterModule } from '@angular/router';
 import { RippleModule } from 'primeng/ripple';
 import { NgClass } from '@angular/common';
 import { DrawerModule } from 'primeng/drawer';
-import { MenuModule } from 'primeng/menu'; // <-- Import MenuModule
-
+import { MenuModule } from 'primeng/menu';
 @Component({
   selector: 'app-navigation',
   standalone: true,
@@ -14,7 +13,7 @@ import { MenuModule } from 'primeng/menu'; // <-- Import MenuModule
     RippleModule,
     NgClass,
     DrawerModule,
-    MenuModule // <-- Add MenuModule here
+    MenuModule
   ],
   templateUrl: './navigation.html',
   styleUrls: ['./navigation.scss']
@@ -24,14 +23,14 @@ export class Navigation {
   drawerHeader = '';
   drawerItems: MenuItem[] = [];
 
-  // Main navigation items with routerLink for active state tracking
+  
   items: MenuItem[] = [
     { label: 'Inventory', icon: 'pi pi-inbox', routerLink: '/inventory' },
     { label: 'Sales', icon: 'pi pi-shopping-cart', routerLink: '/sales' },
     { label: 'Purchase', icon: 'pi pi-credit-card', routerLink: '/purchase' }
   ];
 
-  // Sub-menu items for the drawer, using 'routerLink' property
+ 
   inventoryItems: MenuItem[] = [
     { label: 'Warehouse', routerLink: '/inventory/warehouse', icon: 'pi pi-fw pi-warehouse', routerLinkActiveOptions: { exact: true } },
     { label: 'Transactions', routerLink: '/inventory/transactions', icon: 'pi pi-fw pi-list', routerLinkActiveOptions: { exact: true } },
