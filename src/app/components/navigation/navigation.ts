@@ -33,8 +33,10 @@ export class Navigation {
 
   // Sub-menu items for the drawer, using 'routerLink' property
   inventoryItems: MenuItem[] = [
-    { label: 'Warehouse', routerLink: '/inventory/warehouse', icon: 'pi pi-fw pi-building', routerLinkActiveOptions: { exact: true } },
+    { label: 'Warehouse', routerLink: '/inventory/warehouse', icon: 'pi pi-fw pi-warehouse', routerLinkActiveOptions: { exact: true } },
     { label: 'Transactions', routerLink: '/inventory/transactions', icon: 'pi pi-fw pi-list', routerLinkActiveOptions: { exact: true } },
+    { label: 'AddItem', routerLink: '/inventory/transactions', icon: 'pi pi-fw pi-plus', routerLinkActiveOptions: { exact: true } },
+  
   ];
 
   salesItems: MenuItem[] = [
@@ -50,17 +52,17 @@ export class Navigation {
   itemClick(item: MenuItem) {
     switch (item.label) {
       case 'Inventory':
-        this.drawerHeader = 'Inventory Functions';
+        this.drawerHeader = 'Inventory';
         this.drawerItems = this.inventoryItems;
         break;
       
       case 'Sales':
-        this.drawerHeader = 'Sales Functions';
+        this.drawerHeader = 'Sales';
         this.drawerItems = this.salesItems;
         break;
         
       case 'Purchase':
-        this.drawerHeader = 'Purchase Functions';
+        this.drawerHeader = 'Purchase';
         this.drawerItems = this.purchaseItems;
         break;
 
